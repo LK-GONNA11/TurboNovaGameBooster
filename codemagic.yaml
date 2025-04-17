@@ -6,9 +6,12 @@ workflows:
     environment:
       flutter: stable
       java: 17
-      ndk: "25.x" 
+      ndk: "25.x" # Gardez la version du NDK si nécessaire
     scripts:
-      - name: Get Flutter packages
+      - name: Checkout code
+        script: git clone $CM_BUILD_REPO -b $CM_BUILD_BRANCH .
+
+      - name: Flutter: Get packages
         script: flutter pub get
 
       - name: Upgrade Flutter dependencies
