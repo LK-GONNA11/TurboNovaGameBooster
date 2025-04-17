@@ -14,7 +14,7 @@ scripts:
         script: flutter pub get
       - name: Upgrade Flutter dependencies
         script: flutter pub upgrade
-      - name: Flutter: Clean build
+      - script: Clean build
         script: flutter clean
       - name: Build Android APK
         script: flutter build apk --release --build-name=1.0.0 --build-number=$(date +%Y%m%d%H%M)
