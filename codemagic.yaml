@@ -7,7 +7,7 @@ workflows:
       flutter: stable
       java: 17
       ndk: "25.x"
-    scripts:
+scripts:
       - name: Checkout code
         script: git clone $CM_BUILD_REPO -b $CM_BUILD_BRANCH .
       - name: Get Flutter packages
