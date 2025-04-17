@@ -13,3 +13,18 @@ dependencies:
 
 flutter:
   uses-material-design: true
+
+workflows:
+  android-build: build-android-apk
+    name: Build APK
+    environment:
+      java: 17
+      android_sdk: "33.x"
+      ndk: "25.x"
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Build Android
+        script: flutter build apk
+    artifacts:
+      - build/app/outputs/apk/release/app-release.apk
