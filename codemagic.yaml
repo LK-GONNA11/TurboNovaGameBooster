@@ -6,22 +6,17 @@ workflows:
     environment:
       flutter: stable
       java: 17
-      ndk: "25.x" # Gardez la version du NDK si nécessaire
+      ndk: "25.x"
     scripts:
       - name: Checkout code
         script: git clone $CM_BUILD_REPO -b $CM_BUILD_BRANCH .
-
-      - name: Flutter: Get packages
+      - name: Get Flutter packages
         script: flutter pub get
-
       - name: Upgrade Flutter dependencies
         script: flutter pub upgrade
-
       - name: Flutter: Clean build
         script: flutter clean
-
       - name: Build Android APK
         script: flutter build apk --release --build-name=1.0.0 --build-number=$(date +%Y%m%d%H%M)
-
     artifacts:
       - build/app/outputs/apk/release/app-release.apk
