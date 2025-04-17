@@ -21,7 +21,7 @@ workflows:
       - name: Install NDK version 25.x
         script: /usr/local/share/android-sdk/tools/bin/sdkmanager "ndk;25.x" --sdkroot=/usr/local/share/android-sdk
 
-      - name: Flutter: Get packages
+      - name: Get Flutter packages
         script: flutter pub get
 
       - name: Upgrade Flutter dependencies
