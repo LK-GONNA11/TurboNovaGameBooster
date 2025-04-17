@@ -1,21 +1,6 @@
 name: turbonova_game_booster
-description: A powerful mobile game booster.
-version: 1.0.0+1
-
-environment:
-  sdk: ">=2.18.0 <3.0.0"
-
-dependencies:
-  flutter:
-    sdk: flutter
-  device_info_plus: ^10.0.1
-  battery_plus: ^5.0.0
-
-flutter:
-  uses-material-design: true
-
 workflows:
-  android-build: build-android-apk
+  build-android-apk:
     name: Build APK
     environment:
       java: 17
@@ -24,7 +9,7 @@ workflows:
     scripts:
       - name: Get Flutter packages
         script: flutter pub get
-      - name: Build Android
+      - name: Build Android APK
         script: flutter build apk
     artifacts:
       - build/app/outputs/apk/release/app-release.apk
