@@ -7,29 +7,23 @@ workflows:
       flutter: stable
       java: 17
       ndk: "25.x"
-    scripts:
+scripts:
       - name: Checkout code
         script: git clone $CM_BUILD_REPO -b $CM_BUILD_BRANCH .
-
       - name: Fix sdkmanager NDK installation (Java 17 compatibility)
         script: |
           if [[ "$JAVA_HOME" =~ "zulu-17" ]]; then
             echo "Downloading and adding jaxb-api for Java 17 compatibility..."
             wget -P /usr/lib/jvm/default-java/lib/ext/ https://repo1.maven.org/maven2/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar
           fi
-
       - name: Install NDK version 25.x
         script: /usr/local/share/android-sdk/tools/bin/sdkmanager "ndk;25.x" --sdkroot=/usr/local/share/android-sdk
-
       - name: Get Flutter packages
         script: flutter pub get
-
       - name: Upgrade Flutter dependencies
         script: flutter pub upgrade
-
       - name: Flutter: Clean build
         script: flutter clean
-
       - name: Build Android APK
         script: flutter build apk --release --build-name=1.0.0 --build-number=$(date +%Y%m%d%H%M)
 
